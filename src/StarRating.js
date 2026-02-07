@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const containerStyle = {
@@ -27,15 +27,13 @@ export default function StarRating({
   size = 48,
   className = "",
   messages = [],
-  defaultRating = 0,
+  rating = 0, // 👈 comes from parent
   onSetRating,
 }) {
-  const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
 
-  function handleRating(rating) {
-    setRating(rating);
-    onSetRating(rating);
+  function handleRating(value) {
+    onSetRating(value); // parent updates rating
   }
 
   const textStyle = {

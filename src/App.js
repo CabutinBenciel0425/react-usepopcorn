@@ -61,7 +61,7 @@ export default function App() {
         if (data.Response === "False") {
           throw new Error("Movie not found!");
         }
-
+        handleCloseSelectedMovie();
         setMovies(data.Search);
       } catch (err) {
         if (err.name === "AbortError") return;
